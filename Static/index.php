@@ -1,12 +1,21 @@
 <?php
   class User {
-    public $username;
-    public $password;
-    static public $passwordLength = 5;
+    public $name;
+    public $age;
+    public static $minPassLength = 5;
 
-    public static function getPasswordLength(){
-      return self::$passwordLength;
+    public static function validatePass($pass){
+      if(strlen($pass) >= self::$minPassLength){
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 
-  echo User::getPasswordLength();
+  $password = 'hello';
+  if(User::validatePass($password)){
+    echo 'Password valid';
+  } else {
+    echo 'Password NOT valid';
+  }
